@@ -21,7 +21,7 @@ forEach(["a", "b", "c"], e => {console.log(e)}); // a b c
 // return result;
 // }
 
-//OR
+//OR (Michelle's)
 
 // function forEach (arr, cb){
 //   for (let elem of arr){
@@ -54,7 +54,6 @@ console.log(map([5, 6, 7], e => e * 2)); // [10, 12, 14]
 // function map(arr, cb) {
 //   //initialization
 //   let newarr = [];
-
 //   //Loop over every array element
 //   for (let elem of arr){
 //     let mappedElem = cb(elem);
@@ -152,6 +151,9 @@ The code has been started for you.
 //   sum += e
 // });
 
+//OR
+
+//nums.forEach((nums => sum += nums));
 // console.log(sum);
 
 /*------------------
@@ -180,7 +182,7 @@ Test case:
 
 // const langs = ["JavaScript", "Python", "Go"];
 
-// const duplicate = langs.map((x) => x)
+// const duplicate = langs.map(x => x)
 
 // console.log(duplicate);
 
@@ -198,12 +200,12 @@ const people = [
   { firstname: "Ada", lastname: "Lovelace" },
 ];
 
-// const fullnames = people.map(people => `${people.firstname} ${people.lastname}`);
+const fullnames = people.map(people => `${people.firstname} ${people.lastname}`);
 
 // console.log(fullnames);
 
 /*------------------
-6.4) ???
+6.4) DONE
 Use the map method to create a duplicate of objects that contain the original data plus the fullname.
 Use the same people array as in the previous exercise
 
@@ -219,10 +221,13 @@ Result should be [
 ]
 ------------------*/
 
-// const fullobjects= {...people, ...fullnames };
-
-
+// const fullobjects = people.map(person => ({
+//   ...person,
+//   fullname: `${person.firstname} ${person.lastname}`
+// }));  
+  
 // console.log(fullobjects);
+
 
 /*------------------
 6.5) DONE
@@ -241,7 +246,7 @@ Test case:
 // console.log(areEven);
 
 /*------------------
-6.6) ???
+6.6) MIRKA
 Use the map function to create an array with values "true" or "false" 
 that indicate if the number in that position is equal to the position in the array (starting at 0)
 
@@ -252,7 +257,13 @@ Test case:
 
 // const moreNumbers = [1, 3, 2, 2, 4, 13, 8, 6, 8, 10, 4, 12, 12];
 
-// const areInPosition = moreNumbers.map(x => x === moreNumbers.indexOf(x));
+//WRONG
+// const areInPosition = moreNumbers.map(x => x === moreNumbers.indexOf(x)); 
+//JACOSTA (wrong)
+//or at the end? === moreNumbers[x]
+
+//MIRKA
+// const areInPosition = moreNumbers.map((num, ix) => num ===ix)
 
 // console.log(areInPosition);
 
@@ -285,7 +296,7 @@ Test case:
 // console.log(evenList);
 
 /*------------------
-7.3)???
+7.3)Paulina
 Use the filter method to keep all the numbers that are bigger
 than the position they occupy in the array, starting at 0
 
@@ -294,13 +305,16 @@ Test case:
 ------------------*/
 
 // const moreNums = [1, 0, 1, 3, 5, 6, 6, 1, 9];
+//WRONG
+// const evenList = moreNums.filter(item => item > moreNums.indexOf(item))
 
-// const evenList = moreNums.filter(x => x > moreNums.indexOf(x))
+//Paulina
+//cont evenList = moreNums.filter((num,ix) => num > ix)
 
 // console.log(evenList);
 
 /*------------------
-7.4)???
+7.4)Jacosta/Mirka
 Use the filter method to filter out the people whose firstname
 does not contain the letter "a". Use the array "people" that you used before.
 
@@ -316,12 +330,22 @@ Test case:
   { firstname: "Ada", lastname: "Lovelace" },
 ]
 ------------------*/
-
+//WRONG
 // const peopleWithA = people.filter(x => people.firstname.charCodeAt(0) === "a")
-    // console.log(peopleWithA);
+
+//Jacosta
+// const poepleWithA = people.filter(person => {
+//   if (peroson.firstname.includes('a')){
+//   return person
+// }
+// })
+// OR Mirka
+// const poepleWithA = people.filter(f => f.firstname.includes('a'))
+
+// console.log(peopleWithA);
 
     /*------------------
-    8)???
+    8)Jacosta
     Use the every method to return true
     if every word in the array below is a
     palindrome (the same backwards as forwards).
@@ -342,36 +366,10 @@ Test case:
     const wordList1 = ["deified", "civic", "radar", "level", "rotor"];
     const wordList2 = ["kayak", "reviver", "racecar", "reader", "madam"];
 
-  let list = [];
-  function checkPalindromes(list) {
-    // Split text into array of characters
-    let charArray = list.toLowerCase().split('');
-    // Loop through every character and compare with the
-    // character in its corresponding position if the string
-    // was reversed. Then store the result
-    let result = charArray.every((letter, index) => {
-    return letter === charArray[charArray.length - index - 1];
-    });
-    // Return the result of the evaluation
-    return result
-    }
-    
-// ------------  
-//   function checkPalindromes(list) {
-//   return list.toLowerCase() === list.split('').reverse().join('');
-// }
+// const checkPalindromes = list => list.every(x => x === x.split('').reverse().join(''));
 
-//--------------
-// let list = []  
-// function checkPalindromes(list) {
-//   let reversedText  = list.toLowerCase()
-//   .split('').reverse().join('');
-
-
-// return list === reversedText;
-
-console.log(checkPalindromes(wordList1));
-console.log(checkPalindromes(wordList2));
+// console.log(checkPalindromes(wordList1));
+// console.log(checkPalindromes(wordList2));
 
 /*------------------
 9) DONE
@@ -411,13 +409,18 @@ starting at position 0
 Test case:
 [1, 34, 83, 65, 3, 24, 98] to [65,98]
 ------------------*/
+//HINT TO SELF : long boullion expression
 
-// const oddList = // your code here
+// let tomatoes = [1, 34, 83, 65, 3, 24, 98];
+
+// const oddList = tomatoes.filter((num, ix) => 
+// ((num % 2 === 0) && (ix % 2 === 0)) || ((num % 2 !== 0) && (ix % 2 !== 0))
+// );
 
 // console.log(oddList);
 
 /*------------------
-11.1)
+11.1) ???
 Each array in this array represents the each player's age in a basketball team
 Filter out those teams that have less than 3 players that are older than 20 years old.
 Hint: you can use HOFs inside the callbacks of other HOFs.
@@ -426,10 +429,20 @@ Test case:
 [[20,31,19,18,22],[20,31,16,21,21],[17,31,16,21,21],[18,19,19,20,32]] 
 to [[20, 31, 16, 21, 21], [17, 31, 16, 21, 21]]
 ------------------*/
+let teams =[
+  [20,31,19,18,22],
+  [20,31,16,21,21],
+  [17,31,16,21,21],
+  [18,19,19,20,32]]; 
 
-// let olderTeams = // your code here
+// //let olderPlayers = teams[0].filter(age => age >20);
 
-// console.log(olderTeams);
+let olderTeams = teams.filter(team => {
+  let olderPlayers = team.filter(age => age >20);
+  return olderPlayers.length >= 3;
+  });
+
+console.log(olderTeams);
 
 /*------------------
 11.2) Perhaps you used the .length property in the previous exercise.
