@@ -1,5 +1,5 @@
 /*------------------
-1)
+1) DONE
 Create a function named
 "forEach" that takes in two
 parameters– an array and a
@@ -13,12 +13,28 @@ Test cases:
 forEach(["a", "b", "c"], e => {console.log(e)}); // a b c
 ------------------*/
 
-function forEach(arr, cb) {
-  // your code here
-}
+// function forEach(arr, cb) {
+//   let result = [];
+//   for (let i =0; i < arr.length; i++){
+//   result.push(cb(arr[i]))
+// }
+// return result;
+// }
+
+//OR
+
+// function forEach (arr, cb){
+//   for (let elem of arr){
+//     cb(elem);
+//   }
+// }
+
+// forEach(["a", "b", "c"], e => {console.log(e)}); // a b c
+
+
 
 /*------------------
-2)
+2) DONE (JIM)
 Create a function named
 "map" that takes in two
 parameters– an array and a
@@ -35,12 +51,22 @@ Test cases:
 console.log(map([5, 6, 7], e => e * 2)); // [10, 12, 14]
 ------------------*/
 
-function map(arr, cb) {
-  // your code here
-}
+// function map(arr, cb) {
+//   //initialization
+//   let newarr = [];
+
+//   //Loop over every array element
+//   for (let elem of arr){
+//     let mappedElem = cb(elem);
+//     newarr.push(mappedElem);
+//   }
+
+//   return newarr;
+// }
+// console.log(map([5, 6, 7], e => e * 2)); // [10, 12, 14]
 
 /*------------------
-3)
+3) DONE
 Create a function named
 "filter" that takes in two
 parameters– an array and a
@@ -55,13 +81,26 @@ will return true or false for each item).
 Test cases:
 console.log(filter([5, 6, 7, 8], e => e % 2 === 0 ? true : false)); // [6, 8]
 ------------------*/
+// function filter(arr, cb) {
+//   const filtered = [];
+//   for (let item of arr) {
+//     if (cb(item)) {
+//       filtered.push(item)
+//     }
+//   }
+//   return filtered;
+// }
 
-function filter(arr, cb) {
-  // your code here
-}
+// console.log(filter([5, 6, 7, 8], e => e % 2 === 0 ? true : false)); // [6, 8]
+
+/*
+so you have the parameters, made a new array. 
+Used the callback on the items in the original array pushed 
+those that applied onto the new array and returned the new array. 
+*/
 
 /*------------------
-4)
+4) DONE
 Create a function named
 "every" that takes in two
 parameters– an array and a
@@ -80,12 +119,21 @@ console.log(every([2, 4, 6], n => n < 6)); // false
 console.log(every([2, 4, 6, 2], n => n < 6)); // false
 ------------------*/
 
-function every(array, cb) {
-  // your code here.
-}
+// function every(arr, cb){
+//     for (let item of arr) {
+//       if (cb(item)== false) {
+//         return false
+//       }
+//     }
+// return true
+// }
+
+// console.log(every([1, 3, 5], n => n < 6)); // true
+// console.log(every([2, 4, 6], n => n < 6)); // false
+// console.log(every([2, 4, 6, 2], n => n < 6)); // false
 
 /*------------------
-5)
+5) DONE
 You've written "forEach", "map", "filter"
 and "every" from scratch. Each of 
 these methods exist on the JavaScript Array
@@ -97,17 +145,17 @@ in the nums array. Use a fat arrow function.
 The code has been started for you.
 ------------------*/
 
-const nums = [1, 2, 3, 4, 5, 6, 7, 8];
-let sum = 0;
+// const nums = [1, 2, 3, 4, 5, 6, 7, 8];
+// let sum = 0;
 
-nums.forEach((e) => {
-  // your code here
-});
+// nums.forEach((e) =>  {
+//   sum += e
+// });
 
 // console.log(sum);
 
 /*------------------
-6.1)
+6.1) DONE (JIM)
 Use the native map method to transform
 every item in the names array to a greeting.
 
@@ -115,14 +163,14 @@ Test case:
 ["Sofia", "Pedro", "Mia"] to ["Hello, Sofia!", "Hello, Pedro!", "Hello, Mia!"]
 ------------------*/
 
-const names = ["Sofia", "Pedro", "Mia"];
+// const names = ["Sofia", "Pedro", "Mia"];
 
-// const greetings = // your code here
+// const greetings = names.map(n => `Hello, ${n}!`);
 
 // console.log(greetings);
 
 /*------------------
-6.2)
+6.2) DONE
 Use the map method to create a duplicate of an array.
 Write this in the shorter possible way you can.
 
@@ -130,14 +178,14 @@ Test case:
 ["JavaScript", "Python", "Go"] to ["JavaScript", "Python", "Go"]
 ------------------*/
 
-const langs = ["JavaScript", "Python", "Go"];
+// const langs = ["JavaScript", "Python", "Go"];
 
-// const duplicate = // your code here
+// const duplicate = langs.map((x) => x)
 
 // console.log(duplicate);
 
 /*------------------
-6.3)
+6.3) DONE
 Use the map method to create a duplicate of an array of full names.
 
 Test case:
@@ -150,12 +198,12 @@ const people = [
   { firstname: "Ada", lastname: "Lovelace" },
 ];
 
-// const fullnames = // your code here
+// const fullnames = people.map(people => `${people.firstname} ${people.lastname}`);
 
 // console.log(fullnames);
 
 /*------------------
-6.4)
+6.4) ???
 Use the map method to create a duplicate of objects that contain the original data plus the fullname.
 Use the same people array as in the previous exercise
 
@@ -171,12 +219,13 @@ Result should be [
 ]
 ------------------*/
 
-// const fullobjects = // your code here
+// const fullobjects= {...people, ...fullnames };
+
 
 // console.log(fullobjects);
 
 /*------------------
-6.5)
+6.5) DONE
 Use the map function to create an array with values "true" or "false" 
 that indicate if the number in that position is even
 
@@ -185,14 +234,14 @@ Test case:
 
 ------------------*/
 
-const numbers = [3, 7, 24, 1, 66, 89, 88, 23, 54, 54, 12, 9];
+// const numbers = [3, 7, 24, 1, 66, 89, 88, 23, 54, 54, 12, 9];
 
-// const areEven = // your code here
+// const areEven = numbers.map(num => num % 2 == 0)
 
 // console.log(areEven);
 
 /*------------------
-6.6)
+6.6) ???
 Use the map function to create an array with values "true" or "false" 
 that indicate if the number in that position is equal to the position in the array (starting at 0)
 
@@ -201,14 +250,14 @@ Test case:
 
 ------------------*/
 
-const moreNumbers = [1, 3, 2, 2, 4, 13, 8, 6, 8, 10, 4, 12, 12];
+// const moreNumbers = [1, 3, 2, 2, 4, 13, 8, 6, 8, 10, 4, 12, 12];
 
-// const areInPosition = // your code here
+// const areInPosition = moreNumbers.map(x => x === moreNumbers.indexOf(x));
 
 // console.log(areInPosition);
 
 /*------------------
-7.1)
+7.1) DONE
 Use the filter method to filter out any
 number that is greater than 50.
 
@@ -216,14 +265,14 @@ Test case:
 [1, 34, 83, 65, 3, 24, 98] to [1, 34, 3, 24]
 ------------------*/
 
-const numsList = [1, 34, 83, 65, 3, 24, 98];
+// const numsList = [1, 34, 83, 65, 3, 24, 98];
 
-// const smallNums = // your code here
+// const smallNums = numsList.filter(x => x <50)
 
 // console.log(smallNums);
 
 /*------------------
-7.2)
+7.2) DONE
 Use the filter method to filter out any
 number that is even. Use the same array as before, numList
 
@@ -231,12 +280,12 @@ Test case:
 [1, 34, 83, 65, 3, 24, 98] to [1, 83, 65, 3]
 ------------------*/
 
-// const evenList = // your code here
+// const evenList = numsList.filter(x => x % 2 != 0)
 
 // console.log(evenList);
 
 /*------------------
-7.3)
+7.3)???
 Use the filter method to keep all the numbers that are bigger
 than the position they occupy in the array, starting at 0
 
@@ -244,14 +293,14 @@ Test case:
 [1, 0, 1, 3, 5, 6, 6, 1, 9] to [1, 5, 6, 9]
 ------------------*/
 
-const moreNums = [1, 0, 1, 3, 5, 6, 6, 1, 9];
+// const moreNums = [1, 0, 1, 3, 5, 6, 6, 1, 9];
 
-// const evenList = // your code here
+// const evenList = moreNums.filter(x => x > moreNums.indexOf(x))
 
 // console.log(evenList);
 
 /*------------------
-7.4)
+7.4)???
 Use the filter method to filter out the people whose firstname
 does not contain the letter "a". Use the array "people" that you used before.
 
@@ -268,55 +317,85 @@ Test case:
 ]
 ------------------*/
 
-// const peopleWithA = // your code here
+// const peopleWithA = people.filter(x => people.firstname.charCodeAt(0) === "a")
+    // console.log(peopleWithA);
 
-// console.log(peopleWithA);
+    /*------------------
+    8)???
+    Use the every method to return true
+    if every word in the array below is a
+    palindrome (the same backwards as forwards).
+    
+    Here's some code you can use to reverse
+    a string:
+    
+    .split('').reverse().join('')
+    
+    Notice that the code that has been given
+    to you is wrapped in another function. This is to
+    make testing multiple cases easier. :)
+    
+    Test case:
+    ["deified", "civic", "radar", "level", "rotor"] is true
+    ["kayak", "reviver", "racecar", "reader", "madam"] is false
+    ------------------*/
+    const wordList1 = ["deified", "civic", "radar", "level", "rotor"];
+    const wordList2 = ["kayak", "reviver", "racecar", "reader", "madam"];
+
+  let list = [];
+  function checkPalindromes(list) {
+    // Split text into array of characters
+    let charArray = list.toLowerCase().split('');
+    // Loop through every character and compare with the
+    // character in its corresponding position if the string
+    // was reversed. Then store the result
+    let result = charArray.every((letter, index) => {
+    return letter === charArray[charArray.length - index - 1];
+    });
+    // Return the result of the evaluation
+    return result
+    }
+    
+// ------------  
+//   function checkPalindromes(list) {
+//   return list.toLowerCase() === list.split('').reverse().join('');
+// }
+
+//--------------
+// let list = []  
+// function checkPalindromes(list) {
+//   let reversedText  = list.toLowerCase()
+//   .split('').reverse().join('');
+
+
+// return list === reversedText;
+
+console.log(checkPalindromes(wordList1));
+console.log(checkPalindromes(wordList2));
 
 /*------------------
-8)
-Use the every method to return true
-if every word in the array below is a
-palindrome (the same backwards as forwards).
-
-Here's some code you can use to reverse
-a string: 
-
-.split('').reverse().join('')
-
-Notice that the code that has been given
-to you is wrapped in another function. This is to
-make testing multiple cases easier. :)
-
-Test case:
-["deified", "civic", "radar", "level", "rotor"] is true
-["kayak", "reviver", "racecar", "reader", "madam"] is false
-------------------*/
-
-const wordList1 = ["deified", "civic", "radar", "level", "rotor"];
-const wordList2 = ["kayak", "reviver", "racecar", "reader", "madam"];
-
-function checkPalindromes(list) {
-  return list.every(() => {
-    // add necessary parameters in above
-    // and finish the code in the body here
-  });
-}
-
-// console.log(checkPalindromes(wordList1));
-// console.log(checkPalindromes(wordList2));
-
-/*------------------
-9)
+9) DONE
 Look at the MDN docs and Eloquent JavaScript
 to understand how "reduce" works. Then, 
 use reduce to add all the items in the 
 numsList (from the previous question) together.
 ------------------*/
+// const numsList = [1, 34, 83, 65, 3, 24, 98];
 
-const total = numsList.reduce(() => {
-  // add necessary parameters in above
-  // and finish the code in the body here
-});
+// const total = numsList.reduce((accum, cur) => {
+//   return accum + cur;
+// }, 0);
+
+//OR
+
+// const total = numsList.reduce((accum, cur) => accum + cur , 0);
+
+///OR
+
+// const total = numsList.reduce(
+//   ( accumulator, currentValue ) => accumulator + currentValue,
+//   0
+// )
 
 // console.log(total); // should equal 308
 
